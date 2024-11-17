@@ -171,6 +171,7 @@ export function SettingsPanel({
               type="range"
               min="-180"
               max="180"
+              step="5"
               value={settings.rotation}
               onChange={(e) =>
                 onSettingsChange({ rotation: Number(e.target.value) })
