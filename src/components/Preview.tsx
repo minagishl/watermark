@@ -52,6 +52,7 @@ export function Preview({
       position: "absolute",
       inset: 0,
       width: "100%",
+      zIndex: -99,
     };
   };
 
