@@ -23,6 +23,10 @@ export function SettingsPanel({
     "double",
     "rounded",
     "dotted",
+    "groove",
+    "ridge",
+    "inset",
+    "outset",
   ];
 
   return (

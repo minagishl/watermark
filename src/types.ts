@@ -4,7 +4,11 @@ export type BorderType =
   | "dashed"
   | "double"
   | "rounded"
-  | "dotted";
+  | "dotted"
+  | "groove"
+  | "ridge"
+  | "inset"
+  | "outset";
 
 export interface WatermarkSettings {
   text: string;

@@ -24,6 +24,16 @@ export function BorderPreview({ type, selected, onClick }: BorderPreviewProps) {
         return "border-gray-800 border-4 box-content";
       case "rounded":
         return "border-gray-800 rounded-xl";
+      case "dotted":
+        return "border-gray-800 border-dotted";
+      case "groove":
+        return "border-gray-800 border-groove";
+      case "ridge":
+        return "border-gray-800 border-ridge";
+      case "inset":
+        return "border-gray-800 border-inset";
+      case "outset":
+        return "border-gray-800 border-outset";
       default:
         return "";
     }
