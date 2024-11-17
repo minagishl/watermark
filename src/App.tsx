@@ -22,6 +22,9 @@ const defaultSettings: WatermarkSettings = {
   showDiagonalLine: false,
   diagonalLineWidth: 2,
   textAlign: "center",
+  isRingText: false,
+  ringRadius: 150,
+  ringTextReverse: false,
 };
 
 function App() {

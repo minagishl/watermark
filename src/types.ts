@@ -29,4 +29,7 @@ export interface WatermarkSettings {
   showDiagonalLine: boolean;
   diagonalLineWidth: number;
   textAlign: TextAlignment;
+  isRingText: boolean;
+  ringRadius: number;
+  ringTextReverse: boolean;
 }

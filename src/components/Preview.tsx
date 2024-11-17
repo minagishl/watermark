@@ -56,6 +56,36 @@ export function Preview({
     };
   };
 
+  const renderRingText = () => {
+    if (!settings.isRingText) return settings.text;
+
+    const characters = settings.ringTextReverse
+      ? settings.text.split("").reverse()
+      : settings.text.split("");
+    const angleStep = 360 / characters.length;
+
+    return (
+      <div className="relative size-full">
+        {characters.map((char, i) => (
+          <div
+            key={i}
+            style={{
+              position: "absolute",
+              left: "50%",
+              top: `calc(50% - ${settings.ringRadius}px)`,
+              width: "20px",
+              height: "20px",
+              transformOrigin: `50% calc(50% + ${settings.ringRadius}px)`,
+              transform: `rotate(${i * angleStep}deg) translateX(-50%)`,
+            }}
+          >
+            {char}
+          </div>
+        ))}
+      </div>
+    );
+  };
+
   return (
     <div className="flex-1">
       <div className="bg-white rounded-xl shadow-lg p-6 mb-4">
@@ -85,6 +115,8 @@ export function Preview({
                   fontFamily: settings.fontFamily,
                   fontWeight: settings.fontWeight,
                   textAlign: settings.textAlign,
+                  height: settings.isRingText ? `100%` : "auto",
+                  width: settings.isRingText ? `100%` : "auto",
                   ...getBorderStyles(),
                   ...(settings.isCircle && {
                     borderRadius: "100%",
@@ -96,7 +128,7 @@ export function Preview({
                 }}
               >
                 <div style={getDiagonalLineStyle()} />
-                {settings.text}
+                {renderRingText()}
               </div>
             </div>
           </div>

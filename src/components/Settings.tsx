@@ -93,12 +93,66 @@ export function SettingsPanel({
                 max="100"
                 step="5"
                 value={settings.circlePadding}
-                onChange={(e) =>
-                  onSettingsChange({ circlePadding: Number(e.target.value) })
-                }
+                onChange={(e) => {
+                  onSettingsChange({ circlePadding: Number(e.target.value) });
+                  onSettingsChange({ isRingText: false });
+                }}
                 className="w-full"
               />
             </div>
+          )}
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              リングテキスト
+            </label>
+            <input
+              type="checkbox"
+              checked={settings.isRingText}
+              onChange={(e) => {
+                onSettingsChange({ isRingText: e.target.checked });
+                onSettingsChange({ isCircle: false });
+                onSettingsChange({ borderType: "none" });
+              }}
+              className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+            />
+          </div>
+
+          {settings.isRingText && (
+            <>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  リングの半径: {settings.ringRadius}px
+                </label>
+                <input
+                  type="range"
+                  min="50"
+                  max="300"
+                  step="5"
+                  value={settings.ringRadius}
+                  onChange={(e) =>
+                    onSettingsChange({ ringRadius: Number(e.target.value) })
+                  }
+                  className="w-full"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  リングテキスト（逆転）
+                </label>
+                <input
+                  type="checkbox"
+                  checked={settings.ringTextReverse}
+                  onChange={(e) =>
+                    onSettingsChange({
+                      ringTextReverse: e.target.checked,
+                    })
+                  }
+                  className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                />
+              </div>
+            </>
           )}
 
           <div>
