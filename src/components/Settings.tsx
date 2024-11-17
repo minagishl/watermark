@@ -22,6 +22,7 @@ export function SettingsPanel({
     "dashed",
     "double",
     "rounded",
+    "dotted",
   ];
 
   return (

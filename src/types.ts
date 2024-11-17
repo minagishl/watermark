@@ -1,4 +1,10 @@
-export type BorderType = "none" | "solid" | "dashed" | "double" | "rounded";
+export type BorderType =
+  | "none"
+  | "solid"
+  | "dashed"
+  | "double"
+  | "rounded"
+  | "dotted";
 
 export interface WatermarkSettings {
   text: string;
