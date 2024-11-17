@@ -55,6 +55,7 @@ export function Preview({
                   color: settings.color,
                   lineHeight: settings.lineHeight,
                   fontFamily: settings.fontFamily,
+                  fontWeight: settings.fontWeight,
                   ...getBorderStyles(),
                 }}
               >

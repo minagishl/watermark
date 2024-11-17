@@ -21,4 +21,5 @@ export interface WatermarkSettings {
   borderWidth: number;
   fontFamily: string;
   backgroundTransparent: boolean;
+  fontWeight: number;
 }

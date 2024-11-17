@@ -16,6 +16,7 @@ const defaultSettings: WatermarkSettings = {
   fontFamily:
     '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
   backgroundTransparent: true,
+  fontWeight: 400,
 };
 
 function App() {
