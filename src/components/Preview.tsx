@@ -62,7 +62,7 @@ export function Preview({
                     aspectRatio: "1",
                     alignItems: "center",
                     display: "flex",
-                    padding: "50px",
+                    padding: `${settings.circlePadding}px`,
                   }),
                 }}
               >

@@ -82,6 +82,25 @@ export function SettingsPanel({
             />
           </div>
 
+          {settings.isCircle === true && (
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                円形モード / スペース: {settings.circlePadding}px
+              </label>
+              <input
+                type="range"
+                min="10"
+                max="100"
+                step="5"
+                value={settings.circlePadding}
+                onChange={(e) =>
+                  onSettingsChange({ circlePadding: Number(e.target.value) })
+                }
+                className="w-full"
+              />
+            </div>
+          )}
+
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               フォント

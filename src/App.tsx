@@ -18,6 +18,7 @@ const defaultSettings: WatermarkSettings = {
   backgroundTransparent: true,
   fontWeight: 400,
   isCircle: false,
+  circlePadding: 50,
 };
 
 function App() {
