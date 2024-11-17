@@ -39,7 +39,7 @@ export function Preview({
         <div className="border-2 border-gray-200 rounded-lg">
           <div
             ref={watermarkRef}
-            className="relative w-full h-[600px] bg-white rounded-lg overflow-hidden"
+            className="relative w-full h-[600px] bg-white rounded-lg overflow-hidden select-none"
           >
             <div
               className="absolute inset-0 flex items-center justify-center"
