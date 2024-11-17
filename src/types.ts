@@ -22,4 +22,5 @@ export interface WatermarkSettings {
   fontFamily: string;
   backgroundTransparent: boolean;
   fontWeight: number;
+  isCircle: boolean;
 }

@@ -57,6 +57,13 @@ export function Preview({
                   fontFamily: settings.fontFamily,
                   fontWeight: settings.fontWeight,
                   ...getBorderStyles(),
+                  ...(settings.isCircle && {
+                    borderRadius: "100%",
+                    aspectRatio: "1",
+                    alignItems: "center",
+                    display: "flex",
+                    padding: "50px",
+                  }),
                 }}
               >
                 {settings.text}
