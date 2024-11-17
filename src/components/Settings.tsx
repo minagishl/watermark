@@ -77,7 +77,10 @@ export function SettingsPanel({
             <input
               type="checkbox"
               checked={settings.isCircle}
-              onChange={(e) => onSettingsChange({ isCircle: e.target.checked })}
+              onChange={(e) => {
+                onSettingsChange({ isCircle: e.target.checked });
+                onSettingsChange({ isRingText: false });
+              }}
               className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
             />
           </div>
@@ -93,10 +96,9 @@ export function SettingsPanel({
                 max="100"
                 step="5"
                 value={settings.circlePadding}
-                onChange={(e) => {
-                  onSettingsChange({ circlePadding: Number(e.target.value) });
-                  onSettingsChange({ isRingText: false });
-                }}
+                onChange={(e) =>
+                  onSettingsChange({ circlePadding: Number(e.target.value) })
+                }
                 className="w-full"
               />
             </div>
