@@ -19,6 +19,8 @@ const defaultSettings: WatermarkSettings = {
   fontWeight: 400,
   isCircle: false,
   circlePadding: 50,
+  showDiagonalLine: false,
+  diagonalLineWidth: 2,
 };
 
 function App() {

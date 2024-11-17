@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Download, RefreshCw } from "lucide-react";
 import { WatermarkSettings } from "../types";
 
@@ -15,6 +15,8 @@ export function Preview({
   onReset,
   onDownload,
 }: PreviewProps) {
+  const watermarkInnerRef = useRef<HTMLDivElement>(null);
+
   const getBorderStyles = () => {
     if (settings.borderType === "none") return {};
 
@@ -30,6 +32,27 @@ export function Preview({
     }
 
     return baseStyle;
+  };
+
+  const getDiagonalLineStyle = (): React.CSSProperties => {
+    if (!settings.showDiagonalLine || !watermarkInnerRef.current) return {};
+
+    const element = watermarkInnerRef.current;
+    const { offsetWidth: width, offsetHeight: height } = element;
+    const angle = Math.atan2(height, width) * (180 / Math.PI) + 180;
+
+    return {
+      backgroundImage: `linear-gradient(-${angle}deg, transparent calc(50% - ${
+        settings.diagonalLineWidth / 2
+      }px), ${settings.color} calc(50% - ${
+        settings.diagonalLineWidth / 2
+      }px), ${settings.color} calc(50% + ${
+        settings.diagonalLineWidth / 2
+      }px), transparent calc(50% + ${settings.diagonalLineWidth / 2}px))`,
+      position: "absolute",
+      inset: 0,
+      width: "100%",
+    };
   };
 
   return (
@@ -48,8 +71,12 @@ export function Preview({
               }}
             >
               <div
+                id="watermark"
+                ref={watermarkInnerRef}
                 className="text-center whitespace-pre-wrap font-bold p-4"
                 style={{
+                  overflow: "hidden",
+                  position: "relative",
                   fontSize: `${settings.fontSize}px`,
                   opacity: settings.opacity,
                   color: settings.color,
@@ -66,6 +93,7 @@ export function Preview({
                   }),
                 }}
               >
+                <div style={getDiagonalLineStyle()} />
                 {settings.text}
               </div>
             </div>

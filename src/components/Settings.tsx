@@ -103,6 +103,40 @@ export function SettingsPanel({
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
+              斜線を表示
+            </label>
+            <input
+              type="checkbox"
+              checked={settings.showDiagonalLine}
+              onChange={(e) =>
+                onSettingsChange({ showDiagonalLine: e.target.checked })
+              }
+              className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+            />
+          </div>
+
+          {settings.showDiagonalLine && (
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                斜線の太さ: {settings.diagonalLineWidth}px
+              </label>
+              <input
+                type="range"
+                min="1"
+                max="10"
+                value={settings.diagonalLineWidth}
+                onChange={(e) =>
+                  onSettingsChange({
+                    diagonalLineWidth: Number(e.target.value),
+                  })
+                }
+                className="w-full"
+              />
+            </div>
+          )}
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
               フォント
             </label>
             <FontSelect
