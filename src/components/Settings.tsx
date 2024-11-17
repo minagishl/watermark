@@ -162,12 +162,15 @@ export function SettingsPanel({
             </label>
             <div className="grid grid-cols-3 gap-4">
               {borderTypes.map((type) => (
-                <BorderPreview
-                  key={type}
-                  type={type}
-                  selected={settings.borderType === type}
-                  onClick={() => onSettingsChange({ borderType: type })}
-                />
+                <div>
+                  <BorderPreview
+                    key={type}
+                    type={type}
+                    selected={settings.borderType === type}
+                    onClick={() => onSettingsChange({ borderType: type })}
+                  />
+                  <span className="text-sm text-gray-700">{type}</span>
+                </div>
               ))}
             </div>
           </div>
