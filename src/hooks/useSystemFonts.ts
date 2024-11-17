@@ -25,10 +25,13 @@ export function useSystemFonts() {
   const [availableFonts, setAvailableFonts] = useState(commonFonts);
 
   useEffect(() => {
-    // @ts-expect-error - window.queryLocalFonts is not yet in the TypeScript types
-    if (window.queryLocalFonts) {
-      const getLocalFonts = async () => {
-        try {
+    const getLocalFonts = async () => {
+      try {
+        const permission = await navigator.permissions.query({
+          name: "local-fonts" as PermissionName,
+        });
+
+        if (permission.state === "granted") {
           // @ts-expect-error - window.queryLocalFonts is not yet in the TypeScript types
           const fonts = await window.queryLocalFonts();
           const uniqueFonts = Array.from(
@@ -41,11 +44,18 @@ export function useSystemFonts() {
               .filter((font) => !commonFonts.some((cf) => cf.value === font))
               .map((font) => ({ name: font as string, value: font as string })),
           ]);
-        } catch (error) {
-          console.warn("Local fonts could not be loaded:", error);
         }
-      };
 
+        // Handle the case where the permission is pending
+        if (permission.state === "prompt") {
+          console.log("Local font permission is pending");
+        }
+      } catch (error) {
+        console.warn("Font loading failed:", error);
+      }
+    };
+
+    if ("queryLocalFonts" in window) {
       getLocalFonts();
     }
   }, []);
