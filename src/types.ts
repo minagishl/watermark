@@ -10,6 +10,8 @@ export type BorderType =
   | "inset"
   | "outset";
 
+export type TextAlignment = "left" | "center" | "right";
+
 export interface WatermarkSettings {
   text: string;
   fontSize: number;
@@ -26,4 +28,5 @@ export interface WatermarkSettings {
   circlePadding: number;
   showDiagonalLine: boolean;
   diagonalLineWidth: number;
+  textAlign: TextAlignment;
 }

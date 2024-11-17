@@ -84,6 +84,7 @@ export function Preview({
                   lineHeight: settings.lineHeight,
                   fontFamily: settings.fontFamily,
                   fontWeight: settings.fontWeight,
+                  textAlign: settings.textAlign,
                   ...getBorderStyles(),
                   ...(settings.isCircle && {
                     borderRadius: "100%",

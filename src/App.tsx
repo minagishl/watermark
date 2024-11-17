@@ -21,6 +21,7 @@ const defaultSettings: WatermarkSettings = {
   circlePadding: 50,
   showDiagonalLine: false,
   diagonalLineWidth: 2,
+  textAlign: "center",
 };
 
 function App() {

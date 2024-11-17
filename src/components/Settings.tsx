@@ -1,7 +1,7 @@
 import { Settings as SettingsIcon } from "lucide-react";
 import { BorderPreview } from "./BorderPreview";
 import { FontSelect } from "./FontSelect";
-import { WatermarkSettings, BorderType } from "../types";
+import { WatermarkSettings, BorderType, TextAlignment } from "../types";
 
 interface SettingsPanelProps {
   settings: WatermarkSettings;
@@ -134,6 +134,23 @@ export function SettingsPanel({
               />
             </div>
           )}
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              テキストの配置
+            </label>
+            <select
+              value={settings.textAlign}
+              onChange={(e) =>
+                onSettingsChange({ textAlign: e.target.value as TextAlignment })
+              }
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            >
+              <option value="left">左寄せ</option>
+              <option value="center">中央</option>
+              <option value="right">右寄せ</option>
+            </select>
+          </div>
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
